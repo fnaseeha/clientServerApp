@@ -195,14 +195,14 @@ public class ServerChat {
 
 	    try {
 	      // setup the socket address
-	      InetSocketAddress address = new InetSocketAddress(8190);
+	      InetSocketAddress address = new InetSocketAddress(8282);
 
 	      // initialise the HTTPS server
 	      HttpsServer httpsServer = HttpsServer.create(address, 0);
 	      SSLContext sslContext = SSLContext.getInstance("TLS");
 
 	      // initialise the keystore
-	      char[] password = "password".toCharArray();
+	      char[] password = "qazWSX".toCharArray();
 	      KeyStore ks = KeyStore.getInstance("JKS");
 	      FileInputStream fis = new FileInputStream("src/server.jks");
 	      ks.load(fis, password);
@@ -249,8 +249,8 @@ public class ServerChat {
 	      httpsServer.start();
 	      System.out.println("server started ");
 	    } catch (Exception exception) {
-	      System.out.println("Failed to create HTTPS server on port " + 8190 + " of localhost");
-	      exception.printStackTrace();
+	      System.out.println("Failed to create HTTPS server on port " + 8282 + " of localhost "+exception.getMessage());
+	      //exception.printStackTrace();
 
 	    }
 	  }

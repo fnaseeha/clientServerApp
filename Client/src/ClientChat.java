@@ -36,6 +36,7 @@ public class ClientChat {
 
 	    System.out.println("connect ip:port as <Yourname> (To register)");
 	    String command = scanner.nextLine();
+
 	    Pattern regex1 = Pattern.compile("^connect " +
 	            "(?<ip>((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?))" +
 	            ":(?<port>\\d{4})" +
@@ -49,14 +50,9 @@ public class ClientChat {
 	      name = matches.group("name");
 	      port = matches.group("port");
 
-	     
-
-
 	      System.setProperty("javax.net.ssl.trustStore", "src/client.jks");
-	      System.setProperty("javax.net.ssl.trustStorePassword", "password");
+	      System.setProperty("javax.net.ssl.trustStorePassword", "qazWSX");
 	      
-
-
 	      String httpsURL = "https://" + ip + ":" + port + "/register?name=" + name;
 	      
 	      URL myUrl = new URL(httpsURL);
@@ -104,7 +100,7 @@ public class ClientChat {
 
 	          try {
 	            Thread.sleep(4000);
-	            String httpsURL1 = "https://127.0.0.1:8090/inbox?name=" + name;
+	            String httpsURL1 = "https://127.0.0.1:8282/inbox?name=" + name;
 	            URL myUrl1 = new URL(httpsURL1);
 	            HttpsURLConnection conn1 = (HttpsURLConnection) myUrl1.openConnection();
 
@@ -141,7 +137,7 @@ public class ClientChat {
 	        String sender = name;
 	       
 
-	        String httpsURL1 = "https://127.0.0.1:8090/send?message=" + message.trim()
+	        String httpsURL1 = "https://127.0.0.1:8282/send?message=" + message.trim()
 	                + "&receiver=" + receiver.trim()
 	                + "&sender=" + sender.trim();
 	        URL myUrl1 = new URL(httpsURL1);
@@ -166,7 +162,7 @@ public class ClientChat {
 	  private static void getList() {
 	    try {
 	      System.out.println("--List of connected users--");
-	      String httpsURL1 = "https://127.0.0.1:8090/list?name=" + name;
+	      String httpsURL1 = "https://127.0.0.1:8282/list?name=" + name;
 	      URL myUrl1 = new URL(httpsURL1);
 	      HttpsURLConnection conn1 = (HttpsURLConnection) myUrl1.openConnection();
 
